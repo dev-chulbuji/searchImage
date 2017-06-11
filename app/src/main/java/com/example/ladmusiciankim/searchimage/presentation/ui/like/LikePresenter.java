@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.example.ladmusiciankim.searchimage.data.repository.DaumImageRepository;
 import com.example.ladmusiciankim.searchimage.entity.DaumImage;
-import com.example.ladmusiciankim.searchimage.presentation.adapter.contract.ImageAdapterContract;
+import com.example.ladmusiciankim.searchimage.presentation.adapter.contract.BaseAdapterContract;
 import com.example.ladmusiciankim.searchimage.presentation.mvp.CommonPrenter;
 import com.example.ladmusiciankim.searchimage.presentation.util.LogUtil;
 
@@ -21,10 +21,10 @@ public class LikePresenter extends CommonPrenter<LikeContract.View> implements L
     private Context context;
 
     @Setter
-    private ImageAdapterContract.View adapterView;
+    private BaseAdapterContract.View adapterView;
 
     @Setter
-    private ImageAdapterContract.Model<DaumImage> adapterModel;
+    private BaseAdapterContract.Model<DaumImage> adapterModel;
 
     @Setter
     private DaumImageRepository daumImageRepository;

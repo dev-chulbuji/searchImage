@@ -21,6 +21,6 @@
     <color name="identity_300">#FFCD01</color>
 
     <color name="txt">#424242</color>
-
+    <color name="txt_bg">#73000000</color>
 
 </resources>

@@ -50,7 +50,9 @@ public class ImageViewHolder extends BaseViewHolder<DaumImage> {
     public void bindView(int position, DaumImage item) {
 
         container.setOnClickListener(v -> {
-            onItemClickListener.onItemClick(v.getId(), position);
+            if (onItemClickListener != null) {
+                onItemClickListener.onItemClick(v.getId(), position);
+            }
         });
 
         RelativeLayout.LayoutParams rlp = (RelativeLayout.LayoutParams) thumnail.getLayoutParams();

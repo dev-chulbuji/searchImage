@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.example.ladmusiciankim.searchimage.data.repository.DaumImageRepository;
 import com.example.ladmusiciankim.searchimage.entity.DaumImage;
-import com.example.ladmusiciankim.searchimage.presentation.adapter.contract.ImageAdapterContract;
+import com.example.ladmusiciankim.searchimage.presentation.adapter.contract.BaseAdapterContract;
 import com.example.ladmusiciankim.searchimage.presentation.mvp.CommonPrenter;
 import com.example.ladmusiciankim.searchimage.presentation.util.LogUtil;
 
@@ -20,10 +20,10 @@ public class ImagePresenter extends CommonPrenter<ImageContract.View> implements
 
     private Context context;
 
-    private ImageAdapterContract.View adapterView;
+    private BaseAdapterContract.View adapterView;
 
     @Setter
-    private ImageAdapterContract.Model<DaumImage> adapterModel;
+    private BaseAdapterContract.Model<DaumImage> adapterModel;
 
     @Setter
     private DaumImageRepository daumImageRepository;
@@ -114,7 +114,7 @@ public class ImagePresenter extends CommonPrenter<ImageContract.View> implements
         });
     }
 
-    public void setAdapterView(ImageAdapterContract.View adapterView) {
+    public void setAdapterView(BaseAdapterContract.View adapterView) {
         this.adapterView = adapterView;
         adapterView.setOnClickListener((id, position) -> {
             onItemClick(id, position);

@@ -8,7 +8,7 @@ import java.util.List;
  * Created by ladmusician.kim on 2017. 6. 9..
  */
 
-public interface ImageAdapterContract {
+public interface BaseAdapterContract {
 
     interface View {
 

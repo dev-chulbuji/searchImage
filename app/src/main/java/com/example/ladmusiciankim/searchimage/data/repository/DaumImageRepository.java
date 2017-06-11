@@ -36,7 +36,7 @@ public class DaumImageRepository implements DaumImageDataSource, LikedImageDataS
 
     @Override
     public void addLikedImage(DaumImage item, IAddImageCallback addLikedImageCallback) {
-        likedImageLocalRepository.addLikedImage(item, new IAddImageCallback() {
+        likedImageLocalRepository.addLikedImage(item, new IAddImageCallback<DaumImage>() {
             @Override
             public void onComepleAddLikedImage(DaumImage item) {
                 if (addLikedImageCallback != null) {

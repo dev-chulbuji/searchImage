@@ -1,9 +1,11 @@
 package com.example.ladmusiciankim.searchimage.data.repository.interfaces;
 
+import java.util.List;
+
 /**
  * Created by ladmusician.kim on 2017. 6. 11..
  */
 
-public interface IAddImageCallback<T> {
-    void onComepleAddLikedImage(T item);
+public interface ILoadSearchQueryCallback {
+    void onImageLoaded(List<String> queries);
 }

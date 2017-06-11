@@ -3,12 +3,14 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
+    <dimen name="margin_4">4dp</dimen>
     <dimen name="margin_8">8dp</dimen>
     <dimen name="margin_16">16dp</dimen>
     <dimen name="margin_24">24dp</dimen>
 
     <!-- item offset -->
-    <dimen name="item_txt_size">11dp</dimen>
+    <dimen name="item_txt_size_15">15dp</dimen>
+    <dimen name="item_txt_size_11">11dp</dimen>
     <dimen name="item_offset">1dp</dimen>
 
     <!-- toolbar -->

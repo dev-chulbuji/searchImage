@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 
 import com.bumptech.glide.RequestManager;
 import com.example.ladmusiciankim.searchimage.entity.DaumImage;
-import com.example.ladmusiciankim.searchimage.presentation.adapter.contract.ImageAdapterContract;
+import com.example.ladmusiciankim.searchimage.presentation.adapter.contract.BaseAdapterContract;
 import com.example.ladmusiciankim.searchimage.presentation.listener.OnItemClickListener;
 import com.example.ladmusiciankim.searchimage.presentation.ui.image.ImageViewHolder;
 
@@ -18,7 +18,7 @@ import java.util.List;
  */
 
 public class LikedImageAdapter extends RecyclerView.Adapter<ImageViewHolder>
-    implements ImageAdapterContract.Model<DaumImage>, ImageAdapterContract.View {
+    implements BaseAdapterContract.Model<DaumImage>, BaseAdapterContract.View {
 
     private List<DaumImage> images;
     private Context context;

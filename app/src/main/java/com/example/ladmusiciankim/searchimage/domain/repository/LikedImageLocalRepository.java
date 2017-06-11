@@ -31,6 +31,7 @@ public class LikedImageLocalRepository implements LikedImageDataSource {
                 return;
             }
         }
+
         likedImages.add(item);
         addLikedImageCallback.onComepleAddLikedImage(item);
     }
