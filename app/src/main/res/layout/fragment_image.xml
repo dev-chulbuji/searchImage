@@ -1,14 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/image_container"
+    <RelativeLayout
+        android:id="@+id/image_search_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="@dimen/toolbar_height"
+        android:background="@color/grey_200"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/image_search_hint"
+            android:gravity="center"
+            android:textSize="12dp"
+            android:textColor="@color/txt"
+            android:background="@drawable/style_border_radius_w"/>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/image_search_info"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_24"
+        android:visibility="gone"
+        android:gravity="center"
+        android:textColor="@color/txt"
+        android:textSize="@dimen/item_txt_size"
+        android:paddingBottom="10dp"
+        android:background="@color/grey_200"
+        android:text=""/>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/image_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/image_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+    <TextView
+        android:id="@+id/image_rtv_info"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:visibility="gone"
+        android:textColor="@color/txt"
+        android:text="@string/no_item_search_image"/>
 
     <ProgressBar
         android:id="@+id/loading"
@@ -16,4 +61,4 @@
         android:layout_height="wrap_content"
         android:visibility="gone"
         android:layout_centerInParent="true" />
-</RelativeLayout>
+</LinearLayout>

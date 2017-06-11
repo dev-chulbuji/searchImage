@@ -82,6 +82,12 @@ public class LikePresenter extends CommonPrenter<LikeContract.View> implements L
 
                 getView().setLoading(false);
                 getView().hideProgress();
+
+                if (adapterModel.getItemCount() == 0) {
+                    getView().showNoItemView();
+                } else {
+                    getView().hideNoItemView();
+                }
             }
         });
     }

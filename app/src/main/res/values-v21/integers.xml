@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <integer name="main_viewpager_count">3</integer>
+    <integer name="main_viewpager_count">2</integer>
 
     <!-- main -->
     <integer name="frag_main_image">0</integer>
-    <integer name="frag_main_search">1</integer>
-    <integer name="frag_main_like">2</integer>
+    <integer name="frag_main_like">1</integer>
 </resources>

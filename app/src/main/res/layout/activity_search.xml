@@ -19,7 +19,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:paddingLeft="@dimen/margin_16"
+            android:inputType="text"
             android:layout_marginRight="@dimen/toolbar_btn_size"
+            android:maxLines="1"
             android:textColor="@color/txt"/>
 
         <TextView

@@ -3,6 +3,14 @@
 
     <string name="arg_search_query">ARG_SEARCH_QUERY</string>
 
+    <string name="image_search_hint">이미지를 검색해보세요</string>
+    <string name="image_search_info">\"의 검색결과 입니다.</string>
+
+    <string name="error_load_images">Oops..OMG-_-\n이미지를 가져오는데 에러가 발생했습니다</string>
+
+    <string name="no_item_search_image">검색된 이미지가 없습니다</string>
+    <string name="no_item_liked_image">보관된 이미지가 없습니다</string>
+
     <string name="complete_item_pick">사진을 성공적으로 저장하였습니다.</string>
 
     <!-- common -->

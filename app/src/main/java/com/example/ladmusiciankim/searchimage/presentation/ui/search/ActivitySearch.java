@@ -47,6 +47,4 @@ public class ActivitySearch extends BaseActivity implements MainContract.View {
     @Override
     public void initView() {
     }
-
-
 }

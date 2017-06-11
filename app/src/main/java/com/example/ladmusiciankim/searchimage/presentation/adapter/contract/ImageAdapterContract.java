@@ -21,6 +21,8 @@ public interface ImageAdapterContract {
 
         M getItem(int position);
 
+        int getItemCount();
+
         void add(M item);
 
         void addItems(List<M> items);

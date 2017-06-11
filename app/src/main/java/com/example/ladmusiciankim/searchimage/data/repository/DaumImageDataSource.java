@@ -2,6 +2,7 @@ package com.example.ladmusiciankim.searchimage.data.repository;
 
 import android.content.Context;
 
+import com.example.ladmusiciankim.searchimage.data.repository.interfaces.ILoadErrorCallback;
 import com.example.ladmusiciankim.searchimage.data.repository.interfaces.ILoadImageCallback;
 
 /**
@@ -12,5 +13,6 @@ public interface DaumImageDataSource {
 
     void getImages(Context context, String query,
                    int page, int perPage,
-                   final ILoadImageCallback loadImageCallback);
+                   final ILoadImageCallback loadImageCallback,
+                   final ILoadErrorCallback errorCallback);
 }

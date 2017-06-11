@@ -87,7 +87,16 @@ public class ImagePresenter extends CommonPrenter<ImageContract.View> implements
 
                 getView().setLoading(false);
                 getView().hideProgress();
+                getView().onCompleteLoadItems();
+
+                if (adapterModel.getItemCount() == 0) {
+                    getView().showNoItemView();
+                } else {
+                    getView().hideNoItemView();
+                }
             }
+        }, (error) -> {
+            getView().onErrorLoadItems();
         });
     }
 
@@ -101,7 +110,7 @@ public class ImagePresenter extends CommonPrenter<ImageContract.View> implements
         LogUtil.e(TAG, "click item :: " + position);
         DaumImage addItem = adapterModel.getItem(position);
         daumImageRepository.addLikedImage(addItem, (item) -> {
-            getView().completeItemPick(addItem);
+            getView().onCompleteItemLike(addItem);
         });
     }
 

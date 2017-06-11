@@ -16,9 +16,17 @@ public interface ImageContract extends BaseContract{
 
         void hideProgress();
 
+        void showNoItemView();
+
+        void hideNoItemView();
+
         void setLoading(boolean isLoading);
 
-        void completeItemPick(DaumImage item);
+        void onCompleteItemLike(DaumImage item);
+
+        void onCompleteLoadItems();
+
+        void onErrorLoadItems();
     }
 
     interface Presenter extends BasePresenter<View> {

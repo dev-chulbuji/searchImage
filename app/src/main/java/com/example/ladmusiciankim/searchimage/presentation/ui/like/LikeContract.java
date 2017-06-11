@@ -15,6 +15,10 @@ public interface LikeContract extends BaseContract{
 
         void hideProgress();
 
+        void showNoItemView();
+
+        void hideNoItemView();
+
         void setLoading(boolean isLoading);
     }
 

@@ -7,7 +7,6 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import com.example.ladmusiciankim.searchimage.presentation.ui.BaseFragment;
 import com.example.ladmusiciankim.searchimage.presentation.ui.image.FragmentImage;
 import com.example.ladmusiciankim.searchimage.presentation.ui.like.FragmentLike;
-import com.example.ladmusiciankim.searchimage.presentation.ui.search.FragmentSearch;
 
 import java.util.ArrayList;
 
@@ -20,7 +19,6 @@ public class AdapterPager extends FragmentStatePagerAdapter {
         super(fragmentManager);
         fragmentLists = new ArrayList<>();
         fragmentLists.add(FragmentImage.newInstance());
-        fragmentLists.add(FragmentSearch.newInstance());
         fragmentLists.add(FragmentLike.newInstance());
         refresh();
     }

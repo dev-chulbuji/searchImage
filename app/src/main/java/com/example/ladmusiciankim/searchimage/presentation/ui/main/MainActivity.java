@@ -9,11 +9,9 @@ import android.support.v4.view.ViewPager;
 import android.widget.Toast;
 
 import com.example.ladmusiciankim.searchimage.R;
-import com.example.ladmusiciankim.searchimage.presentation.mvp.BasePresenter;
 import com.example.ladmusiciankim.searchimage.presentation.ui.BaseActivity;
 import com.example.ladmusiciankim.searchimage.presentation.ui.interaction.IFragmentLikeInteration;
 import com.example.ladmusiciankim.searchimage.presentation.ui.interaction.IFragmentSearchQueryInteraction;
-import com.example.ladmusiciankim.searchimage.presentation.ui.search.ActivitySearch;
 import com.example.ladmusiciankim.searchimage.presentation.util.LogUtil;
 
 import butterknife.BindView;
@@ -21,13 +19,12 @@ import butterknife.BindView;
 public class MainActivity extends BaseActivity implements MainContract.View {
     private static final String TAG = MainActivity.class.getSimpleName();
 
-    @BindView(R.id.main_pager) ViewPager mainPager;
-    @BindView(R.id.main_taps) TabLayout mainTaps;
-
     private AdapterPager fragmentPagerAdapter;
     private boolean isBackPressedOnce = false;
     private Handler timerHandler;
-    protected BasePresenter basePresenter;
+
+    @BindView(R.id.main_pager) ViewPager mainPager;
+    @BindView(R.id.main_taps) TabLayout mainTaps;
 
     @Override
     public int getLayoutID() {
@@ -46,6 +43,12 @@ public class MainActivity extends BaseActivity implements MainContract.View {
         initTabLayout();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mainTaps.addOnTabSelectedListener(mainTapSelectedListener);
+    }
+
     private void initPager() {
         fragmentPagerAdapter = new AdapterPager(getSupportFragmentManager());
         mainPager.setOffscreenPageLimit(getResources().getInteger(R.integer.main_viewpager_count));
@@ -54,9 +57,7 @@ public class MainActivity extends BaseActivity implements MainContract.View {
     }
 
     private void initTabLayout() {
-        mainTaps.addOnTabSelectedListener(mainTapSelectedListener);
         mainTaps.addTab(mainTaps.newTab().setIcon(R.drawable.selector_tab_image));
-        mainTaps.addTab(mainTaps.newTab().setIcon(R.drawable.selector_tab_search));
         mainTaps.addTab(mainTaps.newTab().setIcon(R.drawable.selector_tab_like));
     }
 
@@ -80,11 +81,14 @@ public class MainActivity extends BaseActivity implements MainContract.View {
         public void onPageSelected(int position) {
             LogUtil.e(TAG, "main page selection :: " + position);
 
-            if (position == getResources().getInteger(R.integer.frag_main_search)) {
-                mainTaps.getTabAt(0).select();
-            }
-            if (position == getResources().getInteger(R.integer.frag_main_like)) {
-                ((IFragmentLikeInteration)fragmentPagerAdapter.getItem(2)).loadRefresh();
+            switch (position) {
+                case 1:
+                    ((IFragmentLikeInteration)fragmentPagerAdapter.getItem(1)).loadRefresh();
+                    mainTaps.getTabAt(position).select();
+                case 0:
+                    mainTaps.getTabAt(position).select();
+                    break;
+
             }
         }
 
@@ -96,20 +100,7 @@ public class MainActivity extends BaseActivity implements MainContract.View {
     private TabLayout.OnTabSelectedListener mainTapSelectedListener = new TabLayout.OnTabSelectedListener() {
         @Override
         public void onTabSelected(TabLayout.Tab tab) {
-            switch (tab.getPosition()) {
-                case 0:
-                    mainPager.setCurrentItem(tab.getPosition(), true);
-                    break;
-                case 1:
-                    LogUtil.e(TAG, "search click");
-                    mainPager.setCurrentItem(0, true);
-                    startActivityForResult(new Intent(MainActivity.this, ActivitySearch.class), 0);
-                    break;
-                case 2:
-                    mainPager.setCurrentItem(tab.getPosition(), true);
-                    break;
-            }
-
+            mainPager.setCurrentItem(tab.getPosition(), true);
         }
         @Override
         public void onTabUnselected(TabLayout.Tab tab) {

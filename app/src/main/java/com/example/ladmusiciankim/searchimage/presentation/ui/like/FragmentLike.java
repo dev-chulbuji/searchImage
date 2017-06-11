@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
@@ -33,6 +34,7 @@ public class FragmentLike extends BaseFragment<ImageContract>
     private LinearLayoutManager layoutManager = null;
     private boolean isLoading = false;
 
+    @BindView(R.id.like_no_item_view) TextView noItemView;
     @BindView(R.id.like_container) RecyclerView lvImage;
     @BindView(R.id.loading) ProgressBar loading;
 
@@ -88,6 +90,16 @@ public class FragmentLike extends BaseFragment<ImageContract>
                 }
             }
         });
+    }
+
+    @Override
+    public void showNoItemView() {
+        noItemView.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideNoItemView() {
+        noItemView.setVisibility(View.GONE);
     }
 
     @Override

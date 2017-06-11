@@ -7,6 +7,7 @@ import com.example.ladmusiciankim.searchimage.data.model.ResultChannel;
 import com.example.ladmusiciankim.searchimage.data.model.ResultModel;
 import com.example.ladmusiciankim.searchimage.data.remote.ImageService;
 import com.example.ladmusiciankim.searchimage.data.repository.DaumImageDataSource;
+import com.example.ladmusiciankim.searchimage.data.repository.interfaces.ILoadErrorCallback;
 import com.example.ladmusiciankim.searchimage.data.repository.interfaces.ILoadImageCallback;
 import com.example.ladmusiciankim.searchimage.presentation.util.LogUtil;
 
@@ -28,8 +29,11 @@ public class DaumImageNetworkRepository implements DaumImageDataSource {
     }
 
     @Override
-    public void getImages(Context context, String query, int page, int perPage, ILoadImageCallback loadImageCallback) {
-        String API_KEY = "0209750c80bd44960b56c82f97e48e7d";
+    public void getImages(Context context, String query,
+                          int page, int perPage,
+                          ILoadImageCallback loadImageCallback,
+                          ILoadErrorCallback errorCallback) {
+        String API_KEY = "d5ab91574e20fd3bc534c36910f1fd48";
 
         ImageService.getRestApiClient().getImages(API_KEY, query, page, perPage, "json")
                 .subscribeOn(Schedulers.io())
@@ -41,10 +45,8 @@ public class DaumImageNetworkRepository implements DaumImageDataSource {
                 .toList()
                 .toObservable()
                 .subscribe(
-                        images -> {
-                            loadImageCallback.onImageLoaded(images);
-                        },
-                        Throwable::printStackTrace,
+                        loadImageCallback::onImageLoaded,
+                        errorCallback::onError,
                         ()->{
                             LogUtil.e(TAG, "onComplete");});
     }
