@@ -8,6 +8,8 @@
 
     <string name="error_load_images">Oops..OMG-_-\n이미지를 가져오는데 에러가 발생했습니다</string>
 
+    <string name="error_no_search_query">검색어를 입력해주세요.</string>
+
     <string name="no_item_search_image">검색된 이미지가 없습니다</string>
     <string name="no_item_liked_image">보관된 이미지가 없습니다</string>
     <string name="no_item_search_query">검색내역이 없습니다</string>

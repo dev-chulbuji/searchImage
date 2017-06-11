@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.ladmusiciankim.searchimage.R;
 import com.example.ladmusiciankim.searchimage.data.repository.SearchQueryRepository;
@@ -34,7 +35,12 @@ public class ActivitySearch extends BaseActivity implements SearchContract.View 
 
                 String query = txtSearch.getText().toString();
 
-                setActivityResult(query);
+                if (query.trim().length() == 0) {
+                    Toast.makeText(this, getString(R.string.error_no_search_query), Toast.LENGTH_SHORT).show();
+                } else {
+                    setActivityResult(query);
+                }
+
                 break;
             default:
                 break;

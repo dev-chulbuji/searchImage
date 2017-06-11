@@ -170,6 +170,7 @@ public class FragmentImage extends BaseFragment<ImageContract>
 
     @Override
     public void onErrorLoadItems() {
+        txtSearchInfo.setVisibility(View.GONE);
         txtRtvInfo.setText(R.string.error_load_images);
         txtRtvInfo.setVisibility(View.VISIBLE);
         lvRefresh.setVisibility(View.GONE);
