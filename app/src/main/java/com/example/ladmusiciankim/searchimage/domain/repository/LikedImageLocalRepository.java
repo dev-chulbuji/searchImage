@@ -39,7 +39,7 @@ public class LikedImageLocalRepository implements LikedImageDataSource {
     @Override
     public void getLikedImages(Context context, int page, int perPage, ILoadLikedImageCallback loadImageCallback) {
         int initIdx = page == 1 ? 0 : (page - 1) * perPage;
-        int lastIdx = page * perPage - 1;
+        int lastIdx = page * perPage;
 
         if (likedImages.size() - 1 < lastIdx) {
             lastIdx = likedImages.size();
@@ -47,7 +47,7 @@ public class LikedImageLocalRepository implements LikedImageDataSource {
 
         loadImageCallback.onImageLoaded(
                 likedImages.subList(initIdx, lastIdx),
-                (int)Math.ceil(likedImages.size()/perPage),
+                (int)Math.ceil(likedImages.size()/(double)perPage),
                 likedImages.size());
     }
 }

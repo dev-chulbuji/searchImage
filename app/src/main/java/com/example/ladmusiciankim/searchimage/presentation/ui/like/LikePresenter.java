@@ -31,7 +31,7 @@ public class LikePresenter extends CommonPrenter<LikeContract.View> implements L
 
     private int page = 1;
     private int lastPage = 1;
-    private final int perPage = 20;
+    private final int perPage = 5;
 
     public LikePresenter(LikeContract.View view, Context context) {
         super(view);
@@ -76,7 +76,7 @@ public class LikePresenter extends CommonPrenter<LikeContract.View> implements L
                             adapterModel.clear();
                         }
 
-                        this.lastPage = page;
+                        this.lastPage = lastPage;
 
                         adapterModel.addItems(images);
                         adapterView.refresh();
