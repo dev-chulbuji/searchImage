@@ -12,7 +12,10 @@ public class DaumImageEntityMapper implements EntityMapper<DaumImageNetwork, Dau
     @Override
     public DaumImage fromNetworkObject(DaumImageNetwork obj) {
         DaumImage image = new DaumImage();
-        image.setTitle(obj.getTitle());
+        String filterStr = obj.getTitle().replaceAll("&lt;([^.]*?)&gt;", "");
+        filterStr = filterStr.replaceAll("&#39;", "");
+        filterStr = filterStr.replaceAll("&quot;", "");
+        image.setTitle(filterStr);
         image.setThumbnail(obj.getThumbnail());
         image.setWidth(obj.getWidth());
         image.setHeight(obj.getHeight());

@@ -70,6 +70,7 @@ public class ImageViewHolder extends BaseViewHolder<DaumImage> {
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .thumbnail(0.1f)
                 .into(thumnail);
-        author.setText(item.getAuthor());
+
+        author.setText(item.getTitle());
     }
 }
