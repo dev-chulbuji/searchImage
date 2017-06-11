@@ -69,27 +69,29 @@ public class LikePresenter extends CommonPrenter<LikeContract.View> implements L
         getView().setLoading(true);
         getView().showProgress();
 
-        daumImageRepository.getLikedImages(context, page, perPage, (images, lastPage) -> {
-            if (images != null) {
-                if (isClear) {
-                    adapterModel.clear();
-                }
+        daumImageRepository.getLikedImages(context, page, perPage,
+                (images, lastPage, totalCount) -> {
+                    if (images != null) {
+                        if (isClear) {
+                            adapterModel.clear();
+                        }
 
-                this.lastPage = page;
+                        this.lastPage = page;
 
-                adapterModel.addItems(images);
-                adapterView.refresh();
+                        adapterModel.addItems(images);
+                        adapterView.refresh();
 
-                getView().setLoading(false);
-                getView().hideProgress();
+                        getView().setLoading(false);
+                        getView().hideProgress();
+                        getView().setTotalCount(totalCount);
 
-                if (adapterModel.getItemCount() == 0) {
-                    getView().showNoItemView();
-                } else {
-                    getView().hideNoItemView();
-                }
-            }
-        });
+                        if (adapterModel.getItemCount() == 0) {
+                            getView().showNoItemView();
+                        } else {
+                            getView().hideNoItemView();
+                        }
+                    }
+                });
     }
 
     @Override

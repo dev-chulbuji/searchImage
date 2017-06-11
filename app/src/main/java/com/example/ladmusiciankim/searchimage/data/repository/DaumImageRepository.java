@@ -50,9 +50,9 @@ public class DaumImageRepository implements DaumImageDataSource, LikedImageDataS
     public void getLikedImages(Context context, int page, int perPage, ILoadLikedImageCallback loadImageCallback) {
         likedImageLocalRepository.getLikedImages(context, page, perPage, new ILoadLikedImageCallback() {
             @Override
-            public void onImageLoaded(List<DaumImage> list, int lastPage) {
+            public void onImageLoaded(List<DaumImage> list, int lastPage, int totalCount) {
                 if (loadImageCallback != null) {
-                    loadImageCallback.onImageLoaded(list, lastPage);
+                    loadImageCallback.onImageLoaded(list, lastPage, totalCount);
                 }
             }
         });

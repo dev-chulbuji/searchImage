@@ -20,6 +20,8 @@ public interface LikeContract extends BaseContract{
         void hideNoItemView();
 
         void setLoading(boolean isLoading);
+
+        void setTotalCount(int totalCount);
     }
 
     interface Presenter extends BasePresenter<View> {

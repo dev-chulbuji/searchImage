@@ -47,6 +47,7 @@ public class LikedImageLocalRepository implements LikedImageDataSource {
 
         loadImageCallback.onImageLoaded(
                 likedImages.subList(initIdx, lastIdx),
-                (int)Math.ceil(likedImages.size()/perPage));
+                (int)Math.ceil(likedImages.size()/perPage),
+                likedImages.size());
     }
 }

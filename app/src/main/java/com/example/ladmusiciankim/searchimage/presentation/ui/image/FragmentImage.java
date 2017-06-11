@@ -7,7 +7,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
-import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,7 +44,7 @@ public class FragmentImage extends BaseFragment<ImageContract>
     @BindView(image_rtv_info) TextView txtRtvInfo;
     @BindView(R.id.image_refresh) SwipeRefreshLayout lvRefresh;
     @BindView(R.id.image_container) RecyclerView lvImage;
-    @BindView(R.id.loading) ProgressBar loading;
+    @BindView(R.id.loading) RelativeLayout loading;
 
     @OnClick({R.id.image_search_container})
     void onClick(View view) {
@@ -183,17 +183,19 @@ public class FragmentImage extends BaseFragment<ImageContract>
 
     @Override
     public void showProgress() {
+        lvRefresh.setVisibility(View.GONE);
         loading.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideProgress() {
+        lvRefresh.setVisibility(View.VISIBLE);
+        loading.setVisibility(View.GONE);
     }
 
     @Override
     public void onCompleteLoadItems() {
         lvRefresh.setRefreshing(false);
-    }
-
-    @Override
-    public void hideProgress() {
-        loading.setVisibility(View.GONE);
     }
 
     private ImagePresenter getPresenter() {

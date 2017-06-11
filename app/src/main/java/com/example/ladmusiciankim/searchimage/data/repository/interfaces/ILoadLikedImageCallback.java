@@ -9,5 +9,8 @@ import java.util.List;
  */
 
 public interface ILoadLikedImageCallback {
-    void onImageLoaded(List<DaumImage> list, int lastPage);
+    void onImageLoaded(
+            List<DaumImage> list,
+            int lastPage,
+            int totalCount);
 }

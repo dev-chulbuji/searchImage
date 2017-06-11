@@ -1,5 +1,6 @@
 package com.example.ladmusiciankim.searchimage.presentation.ui.like;
 
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -34,6 +35,7 @@ public class FragmentLike extends BaseFragment<ImageContract>
     private LinearLayoutManager layoutManager = null;
     private boolean isLoading = false;
 
+    @BindView(R.id.like_info) TextView txtInfo;
     @BindView(R.id.like_no_item_view) TextView noItemView;
     @BindView(R.id.like_container) RecyclerView lvImage;
     @BindView(R.id.loading) ProgressBar loading;
@@ -94,11 +96,13 @@ public class FragmentLike extends BaseFragment<ImageContract>
 
     @Override
     public void showNoItemView() {
+        txtInfo.setVisibility(View.GONE);
         noItemView.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideNoItemView() {
+        txtInfo.setVisibility(View.VISIBLE);
         noItemView.setVisibility(View.GONE);
     }
 
@@ -120,6 +124,12 @@ public class FragmentLike extends BaseFragment<ImageContract>
     @Override
     public void setLoading(boolean isLoading) {
         this.isLoading = isLoading;
+    }
+
+    @Override
+    public void setTotalCount(int totalCount) {
+        Resources res = getResources();
+        txtInfo.setText(String.format(res.getString(R.string.like_info), totalCount));
     }
 
     private LikePresenter getPresenter() {

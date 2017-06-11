@@ -14,6 +14,8 @@
     <string name="no_item_liked_image">보관된 이미지가 없습니다</string>
     <string name="no_item_search_query">검색내역이 없습니다</string>
 
+    <string name="like_info">보관한 사진이 총 %d개 있습니다</string>
+
     <string name="complete_item_pick">사진을 성공적으로 저장하였습니다.</string>
 
     <string name="back_pressed">Do u wanna quit the app?</string>
