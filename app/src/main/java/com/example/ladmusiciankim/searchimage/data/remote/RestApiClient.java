@@ -2,7 +2,6 @@ package com.example.ladmusiciankim.searchimage.data.remote;
 
 import com.example.ladmusiciankim.searchimage.data.entity.DaumImageNetwork;
 import com.example.ladmusiciankim.searchimage.data.model.ResultChannel;
-import com.example.ladmusiciankim.searchimage.data.model.ResultModel;
 
 import java.util.List;
 
@@ -17,11 +16,11 @@ import retrofit2.http.Query;
 public interface RestApiClient {
 
     @GET("/search/image")
-    Observable<ResultChannel<ResultModel<List<DaumImageNetwork>>>> getImages(
+    Observable<ResultChannel<List<DaumImageNetwork>>> getImages(
             @Query("apikey") String apiKey,
             @Query("q") String queryStr,
-            @Query("reuslt") int perPage,
             @Query("pageno") int page,
+            @Query("result") int perPage,
             @Query("output") String output
     );
 }

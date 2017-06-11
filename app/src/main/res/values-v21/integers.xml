@@ -5,5 +5,5 @@
     <!-- main -->
     <integer name="frag_main_image">0</integer>
     <integer name="frag_main_search">1</integer>
-    <integer name="frag_main_like">2</integer>
+    <integer name="frag_main_like">1</integer>
 </resources>

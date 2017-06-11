@@ -17,5 +17,5 @@ public interface DaumImageDataSource {
         void onImageLoaded(List<DaumImage> list);
     }
 
-    void getImages(Context context, int size, final LoadImageCallback loadImageCallback);
+    void getImages(Context context, String query, int page, int perPage, final LoadImageCallback loadImageCallback);
 }

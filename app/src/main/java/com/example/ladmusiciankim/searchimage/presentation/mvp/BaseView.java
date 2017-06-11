@@ -1,4 +1,4 @@
-package com.example.ladmusiciankim.searchimage.presentation.view;
+package com.example.ladmusiciankim.searchimage.presentation.mvp;
 
 /**
  * Created by ladmusician.kim on 2017. 6. 8..

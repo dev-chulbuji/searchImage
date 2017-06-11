@@ -28,8 +28,8 @@ public class DaumImageRepository implements DaumImageDataSource{
     }
 
     @Override
-    public void getImages(Context context, int size, final LoadImageCallback loadImageCallback) {
-        daumImageNetworkRepository.getImages(context, size, new LoadImageCallback() {
+    public void getImages(Context context, String query, int page, int perPage, LoadImageCallback loadImageCallback) {
+        daumImageNetworkRepository.getImages(context, query, page, perPage, new LoadImageCallback() {
             @Override
             public void onImageLoaded(List<DaumImage> list) {
                 if (loadImageCallback != null) {
@@ -37,6 +37,5 @@ public class DaumImageRepository implements DaumImageDataSource{
                 }
             }
         });
-
     }
 }

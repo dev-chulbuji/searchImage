@@ -1,6 +1,4 @@
-package com.example.ladmusiciankim.searchimage.presentation.presenter;
-
-import com.example.ladmusiciankim.searchimage.presentation.view.BaseView;
+package com.example.ladmusiciankim.searchimage.presentation.mvp;
 
 /**
  * Created by ladmusician.kim on 2017. 6. 9..

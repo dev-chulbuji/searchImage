@@ -1,7 +1,7 @@
 package com.example.ladmusiciankim.searchimage.presentation.ui.main;
 
-import com.example.ladmusiciankim.searchimage.presentation.presenter.BasePresenter;
-import com.example.ladmusiciankim.searchimage.presentation.view.BaseView;
+import com.example.ladmusiciankim.searchimage.presentation.mvp.BasePresenter;
+import com.example.ladmusiciankim.searchimage.presentation.mvp.BaseView;
 
 /**
  * Created by ladmusician.kim on 2017. 6. 8..

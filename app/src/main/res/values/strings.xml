@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">searchImage</string>
 
+    <string name="arg_search_query">ARG_SEARCH_QUERY</string>
+
     <!-- common -->
     <string name="back_pressed">Do u wanna quit the app?</string>
 </resources>

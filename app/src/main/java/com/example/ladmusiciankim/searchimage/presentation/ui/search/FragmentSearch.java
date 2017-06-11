@@ -1,10 +1,10 @@
-package com.example.ladmusiciankim.searchimage.presentation.ui.main.search;
+package com.example.ladmusiciankim.searchimage.presentation.ui.search;
 
 import android.os.Bundle;
 
 import com.example.ladmusiciankim.searchimage.R;
-import com.example.ladmusiciankim.searchimage.presentation.ui.main.image.ImagePresenter;
-import com.example.ladmusiciankim.searchimage.presentation.ui.main.image.ImageContract;
+import com.example.ladmusiciankim.searchimage.presentation.ui.image.ImagePresenter;
+import com.example.ladmusiciankim.searchimage.presentation.ui.image.ImageContract;
 import com.example.ladmusiciankim.searchimage.presentation.ui.BaseFragment;
 
 /**

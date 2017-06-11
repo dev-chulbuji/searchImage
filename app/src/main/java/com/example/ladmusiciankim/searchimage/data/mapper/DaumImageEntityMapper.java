@@ -11,7 +11,14 @@ public class DaumImageEntityMapper implements EntityMapper<DaumImageNetwork, Dau
 
     @Override
     public DaumImage fromNetworkObject(DaumImageNetwork obj) {
-        return null;
+        DaumImage image = new DaumImage();
+        image.setTitle(obj.getTitle());
+        image.setThumbnail(obj.getThumbnail());
+        image.setWidth(obj.getWidth());
+        image.setHeight(obj.getHeight());
+        image.setImage(obj.getImage());
+        image.setAuthor(obj.getCpname());
+        return image;
     }
 
     @Override

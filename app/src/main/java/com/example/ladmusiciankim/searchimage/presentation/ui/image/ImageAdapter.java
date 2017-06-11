@@ -1,13 +1,15 @@
-package com.example.ladmusiciankim.searchimage.presentation.ui.main.image;
+package com.example.ladmusiciankim.searchimage.presentation.ui.image;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
+import com.bumptech.glide.RequestManager;
 import com.example.ladmusiciankim.searchimage.entity.DaumImage;
 import com.example.ladmusiciankim.searchimage.presentation.adapter.contract.ImageAdapterContract;
-import com.example.ladmusiciankim.searchimage.presentation.linstener.OnItemClickListener;
+import com.example.ladmusiciankim.searchimage.presentation.listener.OnItemClickListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,16 +21,18 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageViewHolder>
 
     private List<DaumImage> images;
     private Context context;
-
     private OnItemClickListener onItemClickListener;
+    private RequestManager glideRequestManager = null;
 
-    public ImageAdapter(Context context) {
+    public ImageAdapter(Context context, RequestManager manager) {
         this.context = context;
+        this.glideRequestManager = manager;
+        images = new ArrayList<>();
     }
 
     @Override
     public ImageViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ImageViewHolder(context, parent, onItemClickListener);
+        return new ImageViewHolder(context, parent, glideRequestManager, onItemClickListener);
     }
 
     @Override
@@ -59,7 +63,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageViewHolder>
 
     @Override
     public void addItems(List<DaumImage> items) {
-        this.images = items;
+        this.images.addAll(items);
     }
 
     @Override

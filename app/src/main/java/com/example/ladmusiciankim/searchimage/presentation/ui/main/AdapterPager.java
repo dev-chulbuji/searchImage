@@ -5,9 +5,9 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.example.ladmusiciankim.searchimage.presentation.ui.BaseFragment;
-import com.example.ladmusiciankim.searchimage.presentation.ui.main.image.FragmentImage;
-import com.example.ladmusiciankim.searchimage.presentation.ui.main.like.FragmentLike;
-import com.example.ladmusiciankim.searchimage.presentation.ui.main.search.FragmentSearch;
+import com.example.ladmusiciankim.searchimage.presentation.ui.image.FragmentImage;
+import com.example.ladmusiciankim.searchimage.presentation.ui.like.FragmentLike;
+import com.example.ladmusiciankim.searchimage.presentation.ui.search.FragmentSearch;
 
 import java.util.ArrayList;
 

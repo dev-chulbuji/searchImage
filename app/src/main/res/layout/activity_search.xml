@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".presentation.ui.search.ActivitySearch">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolbar_height"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/margin_16"
+        android:background="@color/identity_300">
+
+        <com.example.ladmusiciankim.searchimage.presentation.ui.custom.ClearEditText
+            android:id="@+id/search_txt"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="@dimen/margin_16"
+            android:layout_marginRight="@dimen/toolbar_btn_size"
+            android:textColor="@color/txt"/>
+
+        <TextView
+            android:id="@+id/search_submit"
+            android:layout_width="@dimen/toolbar_btn_size"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/txt"
+            android:gravity="center"
+            android:text="검색" />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textColor="@color/txt"
+        android:text="search"/>
+</RelativeLayout>

@@ -10,4 +10,17 @@ import lombok.Setter;
 @Getter
 @Setter
 public class DaumImage extends Entity {
+
+    private String Title;
+
+    private String Thumbnail;
+
+    private int Width;
+
+    private int Height;
+
+    private String Image;
+
+    private String Author;
+
 }

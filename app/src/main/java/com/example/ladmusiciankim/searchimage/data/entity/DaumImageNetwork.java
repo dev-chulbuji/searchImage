@@ -24,14 +24,14 @@ public class DaumImageNetwork extends NetworkEntity {
     @SerializedName("cp")
     private String cp;
 
+    @SerializedName("width")
+    private int width;
+
     @SerializedName("height")
-    private String height;
+    private int height;
 
     @SerializedName("link")
     private String link;
-
-    @SerializedName("width")
-    private String width;
 
     @SerializedName("image")
     private String image;

@@ -7,6 +7,7 @@ import com.example.ladmusiciankim.searchimage.data.model.ResultChannel;
 import com.example.ladmusiciankim.searchimage.data.model.ResultModel;
 import com.example.ladmusiciankim.searchimage.data.remote.ImageService;
 import com.example.ladmusiciankim.searchimage.data.repository.DaumImageDataSource;
+import com.example.ladmusiciankim.searchimage.presentation.util.LogUtil;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -17,27 +18,33 @@ import io.reactivex.schedulers.Schedulers;
  */
 
 public class DaumImageNetworkRepository implements DaumImageDataSource {
+    private static final String TAG = DaumImageNetworkRepository.class.getSimpleName();
+
     private DaumImageEntityMapper mapper;
+
     public DaumImageNetworkRepository() {
         mapper = new DaumImageEntityMapper();
     }
 
     @Override
-    public void getImages(Context context, int size, final LoadImageCallback loadImageCallback) {
-        String API_KEY = "b5bdd29c8a8496141cdb4d22ba74e386";
-        ImageService.getRestApiClient().getImages(API_KEY, "다카오", 10, 1, "json")
+    public void getImages(Context context, String query, int page, int perPage, LoadImageCallback loadImageCallback) {
+        String API_KEY = "0209750c80bd44960b56c82f97e48e7d";
+
+        ImageService.getRestApiClient().getImages(API_KEY, query, page, perPage, "json")
                 .subscribeOn(Schedulers.io())
                 .map(ResultChannel::getChannel)
                 .map(ResultModel::getItem)
-                .flatMap(x -> Observable.fromArray(x.getItem()))
+                .flatMap(Observable::fromIterable)
+                .map(mapper::fromNetworkObject)
                 .observeOn(AndroidSchedulers.mainThread())
+                .toList()
+                .toObservable()
                 .subscribe(
-                        images -> loadImageCallback.onImageLoaded(images),
-                        (e) -> e.printStackTrace(),
-                        () -> {}
-                );
-//                .doOnNext(images -> {
-//                    loadImageCallback.onImageLoaded(images);
-//                });
+                        images -> {
+                            loadImageCallback.onImageLoaded(images);
+                        },
+                        Throwable::printStackTrace,
+                        ()->{
+                            LogUtil.e(TAG, "onComplete");});
     }
 }

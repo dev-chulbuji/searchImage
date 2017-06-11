@@ -1,6 +1,6 @@
 package com.example.ladmusiciankim.searchimage.presentation.adapter.contract;
 
-import com.example.ladmusiciankim.searchimage.presentation.linstener.OnItemClickListener;
+import com.example.ladmusiciankim.searchimage.presentation.listener.OnItemClickListener;
 
 import java.util.List;
 
