@@ -22,5 +22,4 @@ public class DaumImage extends Entity {
     private String Image;
 
     private String Author;
-
 }

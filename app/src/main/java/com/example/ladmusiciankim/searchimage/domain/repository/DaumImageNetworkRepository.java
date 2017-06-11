@@ -7,6 +7,7 @@ import com.example.ladmusiciankim.searchimage.data.model.ResultChannel;
 import com.example.ladmusiciankim.searchimage.data.model.ResultModel;
 import com.example.ladmusiciankim.searchimage.data.remote.ImageService;
 import com.example.ladmusiciankim.searchimage.data.repository.DaumImageDataSource;
+import com.example.ladmusiciankim.searchimage.data.repository.interfaces.ILoadImageCallback;
 import com.example.ladmusiciankim.searchimage.presentation.util.LogUtil;
 
 import io.reactivex.Observable;
@@ -27,7 +28,7 @@ public class DaumImageNetworkRepository implements DaumImageDataSource {
     }
 
     @Override
-    public void getImages(Context context, String query, int page, int perPage, LoadImageCallback loadImageCallback) {
+    public void getImages(Context context, String query, int page, int perPage, ILoadImageCallback loadImageCallback) {
         String API_KEY = "0209750c80bd44960b56c82f97e48e7d";
 
         ImageService.getRestApiClient().getImages(API_KEY, query, page, perPage, "json")

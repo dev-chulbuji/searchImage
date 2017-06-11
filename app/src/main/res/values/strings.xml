@@ -3,6 +3,8 @@
 
     <string name="arg_search_query">ARG_SEARCH_QUERY</string>
 
+    <string name="complete_item_pick">사진을 성공적으로 저장하였습니다.</string>
+
     <!-- common -->
     <string name="back_pressed">Do u wanna quit the app?</string>
 </resources>

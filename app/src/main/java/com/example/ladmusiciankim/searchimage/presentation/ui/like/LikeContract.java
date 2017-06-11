@@ -1,15 +1,14 @@
-package com.example.ladmusiciankim.searchimage.presentation.ui.image;
+package com.example.ladmusiciankim.searchimage.presentation.ui.like;
 
-import com.example.ladmusiciankim.searchimage.entity.DaumImage;
 import com.example.ladmusiciankim.searchimage.presentation.mvp.BasePresenter;
-import com.example.ladmusiciankim.searchimage.presentation.ui.BaseContract;
 import com.example.ladmusiciankim.searchimage.presentation.mvp.BaseView;
+import com.example.ladmusiciankim.searchimage.presentation.ui.BaseContract;
 
 /**
  * Created by ladmusician.kim on 2017. 6. 9..
  */
 
-public interface ImageContract extends BaseContract{
+public interface LikeContract extends BaseContract{
     interface View extends BaseView {
 
         void showProgress();
@@ -17,21 +16,15 @@ public interface ImageContract extends BaseContract{
         void hideProgress();
 
         void setLoading(boolean isLoading);
-
-        void completeItemPick(DaumImage item);
     }
 
     interface Presenter extends BasePresenter<View> {
-
-        void onItemClick(int id, int position);
-
-        void setQuery(String query);
 
         void loadImagesInit();
 
         void loadImagesMore();
 
-        void loadImages(String query, int page, boolean isClear);
+        void loadImages(int page, boolean isClear);
 
         boolean checkLastLoad();
     }

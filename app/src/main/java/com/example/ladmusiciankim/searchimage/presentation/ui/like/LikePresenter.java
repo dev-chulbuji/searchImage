@@ -1,4 +1,4 @@
-package com.example.ladmusiciankim.searchimage.presentation.ui.image;
+package com.example.ladmusiciankim.searchimage.presentation.ui.like;
 
 import android.content.Context;
 
@@ -14,12 +14,13 @@ import lombok.Setter;
  * Created by ladmusician.kim on 2017. 6. 8..
  */
 
-public class ImagePresenter extends CommonPrenter<ImageContract.View> implements ImageContract.Presenter {
-    private static final String TAG = ImagePresenter.class.getSimpleName();
+public class LikePresenter extends CommonPrenter<LikeContract.View> implements LikeContract.Presenter {
+    private static final String TAG = LikePresenter.class.getSimpleName();
     //Observable<List<DaumImage>> getImages(DaumImageNetworkRepository repository);
 
     private Context context;
 
+    @Setter
     private ImageAdapterContract.View adapterView;
 
     @Setter
@@ -28,29 +29,18 @@ public class ImagePresenter extends CommonPrenter<ImageContract.View> implements
     @Setter
     private DaumImageRepository daumImageRepository;
 
-    private String query = "다음카카오";
     private int page = 1;
-    private final int lastPage = 3;
+    private int lastPage = 1;
     private final int perPage = 20;
 
-    public ImagePresenter(ImageContract.View view, Context context) {
+    public LikePresenter(LikeContract.View view, Context context) {
         super(view);
         this.context = context;
     }
 
     @Override
     public void onViewCreated() {
-        loadImages(query, page, false);
-    }
-
-    /**
-     * 검색어 입력
-     * @param query
-     */
-    @Override
-    public void setQuery(String query) {
-        this.query = query;
-        loadImagesInit();
+        loadImages(page, false);
     }
 
     /**
@@ -59,7 +49,7 @@ public class ImagePresenter extends CommonPrenter<ImageContract.View> implements
     @Override
     public void loadImagesInit() {
         this.page = 1;
-        loadImages(query, page, true);
+        loadImages(page, true);
     }
 
     /**
@@ -68,20 +58,25 @@ public class ImagePresenter extends CommonPrenter<ImageContract.View> implements
     @Override
     public void loadImagesMore() {
         if (checkLastLoad()) {
-            loadImages(query, ++page, false);
+            loadImages(++page, false);
         }
     }
 
     @Override
-    public void loadImages(String query, int page, boolean isClear) {
+    public void loadImages(int page, boolean isClear) {
+        LogUtil.e(TAG, "liked image load more");
+
         getView().setLoading(true);
         getView().showProgress();
 
-        daumImageRepository.getImages(context, query, page, perPage, (images) -> {
+        daumImageRepository.getLikedImages(context, page, perPage, (images, lastPage) -> {
             if (images != null) {
                 if (isClear) {
                     adapterModel.clear();
                 }
+
+                this.lastPage = page;
+
                 adapterModel.addItems(images);
                 adapterView.refresh();
 
@@ -94,21 +89,5 @@ public class ImagePresenter extends CommonPrenter<ImageContract.View> implements
     @Override
     public boolean checkLastLoad() {
         return page < lastPage;
-    }
-
-    @Override
-    public void onItemClick(int id, int position) {
-        LogUtil.e(TAG, "click item :: " + position);
-        DaumImage addItem = adapterModel.getItem(position);
-        daumImageRepository.addLikedImage(addItem, (item) -> {
-            getView().completeItemPick(addItem);
-        });
-    }
-
-    public void setAdapterView(ImageAdapterContract.View adapterView) {
-        this.adapterView = adapterView;
-        adapterView.setOnClickListener((id, position) -> {
-            onItemClick(id, position);
-        });
     }
 }

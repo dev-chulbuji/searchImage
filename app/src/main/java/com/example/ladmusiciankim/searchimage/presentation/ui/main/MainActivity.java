@@ -11,7 +11,8 @@ import android.widget.Toast;
 import com.example.ladmusiciankim.searchimage.R;
 import com.example.ladmusiciankim.searchimage.presentation.mvp.BasePresenter;
 import com.example.ladmusiciankim.searchimage.presentation.ui.BaseActivity;
-import com.example.ladmusiciankim.searchimage.presentation.ui.interaction.IFragmentSearchQuery;
+import com.example.ladmusiciankim.searchimage.presentation.ui.interaction.IFragmentLikeInteration;
+import com.example.ladmusiciankim.searchimage.presentation.ui.interaction.IFragmentSearchQueryInteraction;
 import com.example.ladmusiciankim.searchimage.presentation.ui.search.ActivitySearch;
 import com.example.ladmusiciankim.searchimage.presentation.util.LogUtil;
 
@@ -64,7 +65,7 @@ public class MainActivity extends BaseActivity implements MainContract.View {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (resultCode == Activity.RESULT_OK) {
-            ((IFragmentSearchQuery) fragmentPagerAdapter.getItem(0))
+            ((IFragmentSearchQueryInteraction) fragmentPagerAdapter.getItem(0))
                     .setQuery(data.getStringExtra(getString(R.string.arg_search_query)));
         }
     }
@@ -79,7 +80,12 @@ public class MainActivity extends BaseActivity implements MainContract.View {
         public void onPageSelected(int position) {
             LogUtil.e(TAG, "main page selection :: " + position);
 
-            mainTaps.getTabAt(position).select();
+            if (position == getResources().getInteger(R.integer.frag_main_search)) {
+                mainTaps.getTabAt(0).select();
+            }
+            if (position == getResources().getInteger(R.integer.frag_main_like)) {
+                ((IFragmentLikeInteration)fragmentPagerAdapter.getItem(2)).loadRefresh();
+            }
         }
 
         @Override

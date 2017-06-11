@@ -1,6 +1,7 @@
 package com.example.ladmusiciankim.searchimage.presentation.ui.image;
 
 import android.content.Context;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
@@ -27,6 +28,7 @@ public class ImageViewHolder extends BaseViewHolder<DaumImage> {
     private OnItemClickListener onItemClickListener;
     private RequestManager glideRequestManager = null;
 
+    @BindView(R.id.image_container) CardView container;
     @BindView(R.id.image_thumbnail) DynamicHeightImageView thumnail;
     @BindView(R.id.image_author) TextView author;
 
@@ -46,6 +48,10 @@ public class ImageViewHolder extends BaseViewHolder<DaumImage> {
 
     @Override
     public void bindView(int position, DaumImage item) {
+
+        container.setOnClickListener(v -> {
+            onItemClickListener.onItemClick(v.getId(), position);
+        });
 
         RelativeLayout.LayoutParams rlp = (RelativeLayout.LayoutParams) thumnail.getLayoutParams();
         float ratio = (float)item.getHeight() / (float)item.getWidth();

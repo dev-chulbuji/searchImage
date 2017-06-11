@@ -6,14 +6,16 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
 import com.example.ladmusiciankim.searchimage.R;
 import com.example.ladmusiciankim.searchimage.data.repository.DaumImageRepository;
+import com.example.ladmusiciankim.searchimage.entity.DaumImage;
 import com.example.ladmusiciankim.searchimage.presentation.decoration.GridSpacingItemDecoration;
 import com.example.ladmusiciankim.searchimage.presentation.ui.BaseFragment;
-import com.example.ladmusiciankim.searchimage.presentation.ui.interaction.IFragmentSearchQuery;
+import com.example.ladmusiciankim.searchimage.presentation.ui.interaction.IFragmentSearchQueryInteraction;
 
 import butterknife.BindView;
 
@@ -22,7 +24,7 @@ import butterknife.BindView;
  */
 
 public class FragmentImage extends BaseFragment<ImageContract>
-        implements ImageContract.View, IFragmentSearchQuery {
+        implements ImageContract.View, IFragmentSearchQueryInteraction {
     private static final String TAG = FragmentImage.class.getSimpleName();
 
     private ImageAdapter imageAdapter = null;
@@ -99,8 +101,16 @@ public class FragmentImage extends BaseFragment<ImageContract>
     }
 
     @Override
+    public void completeItemPick(DaumImage item) {
+        Toast.makeText(getActivity(),
+                item.getAuthor() + " " + getString(R.string.complete_item_pick), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
     public void setQuery(String query) {
-        getPresenter().setQuery(query);
+        if (query.length() != 0) {
+            getPresenter().setQuery(query);
+        }
     }
 
     @Override
