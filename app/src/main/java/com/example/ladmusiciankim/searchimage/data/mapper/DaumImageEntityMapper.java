@@ -11,6 +11,7 @@ public class DaumImageEntityMapper implements EntityMapper<DaumImageNetwork, Dau
 
     @Override
     public DaumImage fromNetworkObject(DaumImageNetwork obj) {
+
         DaumImage image = new DaumImage();
         String filterStr = obj.getTitle().replaceAll("&lt;([^.]*?)&gt;", "");
         filterStr = filterStr.replaceAll("&#39;", "");

@@ -13,7 +13,7 @@ import com.example.ladmusiciankim.searchimage.R;
 import com.example.ladmusiciankim.searchimage.entity.DaumImage;
 import com.example.ladmusiciankim.searchimage.presentation.adapter.viewholder.BaseViewHolder;
 import com.example.ladmusiciankim.searchimage.presentation.listener.OnItemClickListener;
-import com.example.ladmusiciankim.searchimage.presentation.custom.DynamicHeightImageView;
+import com.example.ladmusiciankim.searchimage.presentation.ui.custom.DynamicHeightImageView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

@@ -1,4 +1,4 @@
-package com.example.ladmusiciankim.searchimage.presentation.custom;
+package com.example.ladmusiciankim.searchimage.presentation.ui.custom;
 
 import android.content.Context;
 import android.support.v7.widget.AppCompatImageView;
