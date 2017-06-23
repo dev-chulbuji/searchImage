@@ -14,6 +14,8 @@ public interface BaseAdapterContract {
 
         void refresh();
 
+        void refreshRange(int start, int count);
+
         void setOnClickListener(OnItemClickListener clickListener);
     }
 

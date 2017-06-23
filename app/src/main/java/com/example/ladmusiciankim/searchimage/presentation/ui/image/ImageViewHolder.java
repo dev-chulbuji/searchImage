@@ -2,13 +2,13 @@ package com.example.ladmusiciankim.searchimage.presentation.ui.image;
 
 import android.content.Context;
 import android.support.v7.widget.CardView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.RequestManager;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.ladmusiciankim.searchimage.R;
 import com.example.ladmusiciankim.searchimage.entity.DaumImage;
 import com.example.ladmusiciankim.searchimage.presentation.adapter.viewholder.BaseViewHolder;
@@ -24,6 +24,8 @@ import butterknife.ButterKnife;
 
 public class ImageViewHolder extends BaseViewHolder<DaumImage> {
 
+    private static final String TAG = ImageViewHolder.class.getSimpleName();
+
     private Context context;
     private OnItemClickListener onItemClickListener;
     private RequestManager glideRequestManager = null;
@@ -36,7 +38,6 @@ public class ImageViewHolder extends BaseViewHolder<DaumImage> {
             Context context, ViewGroup parent,
             RequestManager manager,
             OnItemClickListener onItemClickListener) {
-
         super(LayoutInflater.from(context).inflate(R.layout.item_image, parent, false));
 
         this.context = context;
@@ -63,14 +64,20 @@ public class ImageViewHolder extends BaseViewHolder<DaumImage> {
 
         glideRequestManager
                 .load(item.getThumbnail())
-                .centerCrop()
-                .crossFade()
+//                .centerCrop()
+//                .crossFade()
                 .placeholder(R.drawable.img_default_avatar)
                 .error(R.drawable.img_default_avatar)
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .thumbnail(0.1f)
+                .dontAnimate()
+                .dontTransform()
+//                .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                .thumbnail(0.1f)
                 .into(thumnail);
 
         author.setText(item.getTitle());
+    }
+
+    public enum VingleTransformFactory {
+
     }
 }

@@ -28,6 +28,8 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageViewHolder>
         this.context = context;
         this.glideRequestManager = manager;
         images = new ArrayList<>();
+
+        setHasStableIds(true);
     }
 
     @Override
@@ -42,6 +44,11 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageViewHolder>
     }
 
     @Override
+    public long getItemId(int position) {
+        return images.get(position).hashCode();
+    }
+
+    @Override
     public int getItemCount() {
         return images.size();
     }
@@ -49,6 +56,11 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageViewHolder>
     @Override
     public void refresh() {
         notifyDataSetChanged();
+    }
+
+    @Override
+    public void refreshRange(int start, int count) {
+        notifyItemRangeChanged(start, count);
     }
 
     @Override

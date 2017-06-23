@@ -81,9 +81,12 @@ public class ImagePresenter extends CommonPrenter<ImageContract.View> implements
             if (images != null) {
                 if (isClear) {
                     adapterModel.clear();
+                    adapterView.refresh();
                 }
+
+                int existItemsCount = adapterModel.getItemCount();
                 adapterModel.addItems(images);
-                adapterView.refresh();
+                adapterView.refreshRange(existItemsCount, images.size());
 
                 getView().setLoading(false);
                 getView().hideProgress();

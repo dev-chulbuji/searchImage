@@ -53,6 +53,11 @@ public class LikedImageAdapter extends RecyclerView.Adapter<ImageViewHolder>
     }
 
     @Override
+    public void refreshRange(int start, int count) {
+
+    }
+
+    @Override
     public DaumImage getItem(int position) {
         return images.get(position);
     }

@@ -38,6 +38,7 @@ public class FragmentImage extends BaseFragment<ImageContract>
     private ImagePresenter presenter = null;
     private RequestManager glideRequestManager = null;
     private StaggeredGridLayoutManager layoutManager = null;
+    //private LinearLayoutManager layoutManager = null;
     private boolean isLoading = false;
 
     @BindView(R.id.image_search_info) TextView txtSearchInfo;
@@ -86,10 +87,12 @@ public class FragmentImage extends BaseFragment<ImageContract>
         getPresenter().onViewCreated();
 
         lvImage.setAdapter(imageAdapter);
-        lvImage.setHasFixedSize(true);
+        //lvImage.setHasFixedSize(true);
+        lvImage.setDrawingCacheEnabled(true);
         layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         lvImage.setLayoutManager(layoutManager);
         lvImage.addItemDecoration(new GridSpacingItemDecoration(getActivity()));
+
         lvImage.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
@@ -151,6 +154,10 @@ public class FragmentImage extends BaseFragment<ImageContract>
             txtSearchInfo.setVisibility(View.VISIBLE);
 
             lvImage.smoothScrollToPosition(0);
+
+
+            String test = new String("test");
+
         }
     }
 

@@ -24,6 +24,17 @@ public class DaumImage extends Entity {
     private String Author;
 
     @Override
+    public int hashCode() {
+        int result = Title.hashCode();
+        result = 31 * result + Thumbnail.hashCode();
+        result = 31 * result + Width;
+        result = 31 * result + Height;
+        result = 31 * result + Image.hashCode();
+        result = 31 * result + Author.hashCode();
+        return result;
+    }
+
+    @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null) return false;

@@ -48,6 +48,11 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchViewHolder>
     }
 
     @Override
+    public void refreshRange(int start, int count) {
+
+    }
+
+    @Override
     public String getItem(int position) {
         return queries.get(position);
     }
